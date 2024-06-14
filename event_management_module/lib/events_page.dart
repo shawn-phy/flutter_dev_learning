@@ -3,11 +3,13 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'queries.dart';
 
 class EventsPage extends StatelessWidget {
+  const EventsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Events'),
+        title: const Text('Events'),
       ),
       body: Query(
         options: QueryOptions(
@@ -19,7 +21,7 @@ class EventsPage extends StatelessWidget {
           }
 
           if (result.isLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           List events = result.data?['getEvents'];

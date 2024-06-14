@@ -11,7 +11,7 @@ void main() {
   runApp(
     GraphQLProvider(
       client: client,
-      child: CacheProvider(
+      child: const CacheProvider(
         child: MyApp(),
       ),
     ),
@@ -19,6 +19,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,17 +28,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GraphQL Demo'),
+        title: const Text('GraphQL Demo'),
       ),
       body: Center(
         child: Column(
@@ -44,21 +48,21 @@ class HomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => EventsPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const EventsPage()));
               },
-              child: Text('View Events'),
+              child: const Text('View Events'),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => UsersPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const UsersPage()));
               },
-              child: Text('View Users'),
+              child: const Text('View Users'),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AddAttendeePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddAttendeePage()));
               },
-              child: Text('Add Attendee'),
+              child: const Text('Add Attendee'),
             ),
           ],
         ),

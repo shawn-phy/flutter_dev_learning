@@ -3,11 +3,13 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'queries.dart';
 
 class UsersPage extends StatelessWidget {
+  const UsersPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Users'),
+        title: const Text('Users'),
       ),
       body: Query(
         options: QueryOptions(
@@ -19,7 +21,7 @@ class UsersPage extends StatelessWidget {
           }
 
           if (result.isLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           List users = result.data?['getUsers'];

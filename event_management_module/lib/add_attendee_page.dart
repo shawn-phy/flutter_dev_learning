@@ -3,6 +3,8 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'queries.dart';
 
 class AddAttendeePage extends StatefulWidget {
+  const AddAttendeePage({super.key});
+
   @override
   _AddAttendeePageState createState() => _AddAttendeePageState();
 }
@@ -20,7 +22,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Attendee'),
+        title: const Text('Add Attendee'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,7 +30,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
           options: MutationOptions(
             document: gql(addAttendeeMutation),
             onCompleted: (dynamic resultData) {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Attendee Added!')));
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Attendee Added!')));
               Navigator.pop(context);
             },
           ),
@@ -38,7 +40,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
               child: Column(
                 children: [
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Email'),
+                    decoration: const InputDecoration(labelText: 'Email'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter an email';
@@ -50,7 +52,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Event ID'),
+                    decoration: const InputDecoration(labelText: 'Event ID'),
                     keyboardType: TextInputType.number,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -63,7 +65,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'First Name'),
+                    decoration: const InputDecoration(labelText: 'First Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a first name';
@@ -75,7 +77,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Last Name'),
+                    decoration: const InputDecoration(labelText: 'Last Name'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a last name';
@@ -87,7 +89,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Phone'),
+                    decoration: const InputDecoration(labelText: 'Phone'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a phone number';
@@ -99,7 +101,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                     },
                   ),
                   TextFormField(
-                    decoration: InputDecoration(labelText: 'Registration Date'),
+                    decoration: const InputDecoration(labelText: 'Registration Date'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a registration date';
@@ -110,7 +112,7 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                       _registrationDate = value!;
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -125,13 +127,13 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                         });
                       }
                     },
-                    child: Text('Add Attendee'),
+                    child: const Text('Add Attendee'),
                   ),
                   if (result != null) ...[
                     if (result.hasException)
-                      Text(result.exception.toString(), style: TextStyle(color: Colors.red)),
+                      Text(result.exception.toString(), style: const TextStyle(color: Colors.red)),
                     if (result.isLoading)
-                      CircularProgressIndicator(),
+                      const CircularProgressIndicator(),
                   ]
                 ],
               ),
