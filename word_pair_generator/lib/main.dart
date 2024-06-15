@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primaryColor: Color.fromARGB(255, 25, 6, 99)),
+        theme: ThemeData(primaryColor: const Color.fromARGB(255, 25, 6, 99)),
         home: const RandomWords());
   }
 }
