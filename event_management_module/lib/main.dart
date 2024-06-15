@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'graphql_client.dart';
@@ -5,7 +6,21 @@ import 'events_page.dart';
 import 'users_page.dart';
 import 'add_attendee_page.dart';
 
+// Override HTTP client to handle self-signed certificates
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 void main() {
+  // Set the custom HttpOverrides
+  HttpOverrides.global = MyHttpOverrides();
+
+  // Initialize GraphQL client
   final client = GraphQLConfig.initializeClient();
 
   runApp(
