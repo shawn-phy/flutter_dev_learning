@@ -17,14 +17,17 @@ class EventsPage extends StatelessWidget {
         ),
         builder: (QueryResult result, {fetchMore, refetch}) {
           if (result.hasException) {
+            print(result.exception.toString());
             return Center(child: Text(result.exception.toString()));
+
           }
 
           if (result.isLoading) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          List events = result.data?['getEvents'];
+
+          List events = result.data?['GetEvents'];
 
           return ListView.builder(
             itemCount: events.length,
