@@ -17,6 +17,7 @@ class UsersPage extends StatelessWidget {
         ),
         builder: (QueryResult result, {fetchMore, refetch}) {
           if (result.hasException) {
+            print(result.exception.toString());
             return Center(child: Text(result.exception.toString()));
           }
 
@@ -24,14 +25,24 @@ class UsersPage extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          List users = result.data?['getUsers'];
+          if (result.data == null) {
+            return const Center(child: Text('No data found.'));
+          }
+          print(result.data);
+          
+          List users = result.data?['getAttendees'];
+
+          if (users == null) {
+            print('No users found');
+            return const Center(child: Text('No users found.'));
+          }
 
           return ListView.builder(
             itemCount: users.length,
             itemBuilder: (context, index) {
               final user = users[index];
               return ListTile(
-                title: Text(user['username']),
+                title: Text('${user['firstName']} ${user['lastName']}'),
                 subtitle: Text(user['email']),
               );
             },
