@@ -15,7 +15,7 @@ const String getEventsQuery = r'''
 
 const String getUsersQuery = r'''
 query getAttendees {
-  getAttendees {
+  attendees {
     attendeeId
     email
     eventId
