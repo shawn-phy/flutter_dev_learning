@@ -2,7 +2,7 @@
 
 const String getEventsQuery = r'''
   query GetEvents {
-    getEvents {
+    events {
       eventId
       eventName
       eventDate
@@ -14,14 +14,20 @@ const String getEventsQuery = r'''
 ''';
 
 const String getUsersQuery = r'''
-  query GetUsers {
-    getUsers {
-      userId
-      username
-      email
-    }
+query getAttendees {
+  getAttendees {
+    attendeeId
+    email
+    eventId
+    firstName
+    lastName
+    phone
+    registrationDate
   }
+}
 ''';
+
+
 
 const String addAttendeeMutation = r'''
   mutation AddAttendee(
