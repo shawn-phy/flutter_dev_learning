@@ -102,6 +102,9 @@ class _AddAttendeePageState extends State<AddAttendeePage> {
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Registration Date'),
+                    keyboardType: TextInputType.datetime,
+                    textInputAction: TextInputAction.done,
+                    obscureText: false,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a registration date';

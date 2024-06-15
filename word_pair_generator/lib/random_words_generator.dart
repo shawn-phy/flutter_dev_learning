@@ -67,6 +67,7 @@ class RandomWordsState extends State<RandomWords> {
     }));
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -77,7 +78,7 @@ class RandomWordsState extends State<RandomWords> {
               onPressed: _pushSaved,
             )
           ],
-          backgroundColor: Color.fromARGB(255, 12, 156, 62),
+          backgroundColor: const Color.fromARGB(255, 12, 156, 62),
           foregroundColor: Colors.white,
         ),
         body: _buildList());
