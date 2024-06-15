@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'queries.dart';
 
@@ -26,13 +27,20 @@ class EventsPage extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
+          print(result.data);
 
-          List events = result.data?['GetEvents'];
+
+          List<dynamic> events = result.data?['events'] ?? [];
+
+          if(events.isEmpty){
+            print('events is empty');
+            return const Center(child: Text('No events found.',));
+          }
 
           return ListView.builder(
             itemCount: events.length,
             itemBuilder: (context, index) {
-              final event = events[index];
+              final event = events[index] as Map<String, dynamic>;
               return ListTile(
                 title: Text(event['eventName']),
                 subtitle: Text(event['location']),
