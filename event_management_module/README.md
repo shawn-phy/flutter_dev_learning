@@ -1,4 +1,4 @@
-# word_pair_generator
+# Event_management_module
 
 A new Flutter project.
 
